@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.xiaozhenglang.eventreport.MainActivity">
 
-    <ListView
-        android:id="@+id/event_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ListView>
+    <fragment
+        android:name="com.example.xiaozhenglang.eventreport.EventFragment"
+        android:id="@+id/event_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </RelativeLayout>
