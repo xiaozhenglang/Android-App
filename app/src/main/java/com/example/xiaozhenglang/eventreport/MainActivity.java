@@ -1,7 +1,11 @@
 package com.example.xiaozhenglang.eventreport;
 
-import android.support.v7.app.AppCompatActivity;
+
+
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
@@ -9,20 +13,40 @@ import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+EventFragment.onItemSelectedListener{
+    private EventFragment mListFragment;
+    private CommentFragment mGridFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Show different fragments based on screen size.
 
 
-//        ListView eventListView = (ListView) findViewById(R.id.event_list);
-//        EventAdapter adapter = new EventAdapter(this);
-//
-//        eventListView.setAdapter(adapter);
+        mListFragment = new EventFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.event_container, mListFragment).commit();
+
+        if(isTablet()) {
+            mGridFragment = new CommentFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.comment_container, mGridFragment).commit();
+        }
+
 
     }
+
+    private boolean isTablet() {
+        return (getApplicationContext().getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
+    }
+
+    @Override
+    public void onItemSelected(int position) {
+        mGridFragment.onItemSelected(position);
+    }
+
 
 
     private String[] getEventNames() {
