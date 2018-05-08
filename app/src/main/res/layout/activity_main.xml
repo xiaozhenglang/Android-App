@@ -4,23 +4,62 @@
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:padding="20dp"
     tools:context="com.example.xiaozhenglang.eventreport.MainActivity">
 
+    <TextView
+        android:text="UserName"
+        android:fontFamily="Roboto"
+        android:textColor="#FF3F89E7"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-    <RelativeLayout
-        android:id="@+id/event_container"
-        android:layout_width="200sp"
-        android:layout_height="match_parent">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:id="@+id/eidtTextLogin"
+        android:layout_gravity="center_horizontal"/>
 
-    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="20dp"
+        android:fontFamily="Roboto"
+        android:textColor="#FF3F89E7"/>
 
-    <RelativeLayout
-        android:id="@+id/comment_container"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+    <EditText
+        android:fontFamily="Roboto"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/editTextPassword"
+        android:inputType="textPassword"
+        android:layout_gravity="center_horizontal" />
 
-    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:fontFamily="Roboto"
+        android:textColor="@android:color/white"
+        android:background="@drawable/login_button"
+        android:id="@+id/submit"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Register"
+        android:textColor="@android:color/white"
+        android:background="@drawable/login_button"
+        android:fontFamily="Roboto"
+        android:id="@+id/register"/>
 
 
 </LinearLayout>

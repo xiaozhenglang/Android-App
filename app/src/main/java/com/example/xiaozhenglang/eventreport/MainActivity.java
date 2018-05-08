@@ -11,10 +11,12 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements
-EventFragment.onItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements EventFragment.OnItemSelected {
     private EventFragment mListFragment;
     private CommentFragment mGridFragment;
 
@@ -23,18 +25,14 @@ EventFragment.onItemSelectedListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Show different fragments based on screen size.
-
-
-        mListFragment = new EventFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.event_container, mListFragment).commit();
-
-        if(isTablet()) {
-            mGridFragment = new CommentFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.comment_container, mGridFragment).commit();
-        }
+        Log.e("Life Cycle","onCreate();");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+        myRef.setValue("Hello world");
 
 
     }
+
 
     private boolean isTablet() {
         return (getApplicationContext().getResources().getConfiguration().screenLayout &
@@ -42,20 +40,10 @@ EventFragment.onItemSelectedListener{
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
+
     @Override
-    public void onItemSelected(int position) {
+    public void onItemSeleted(int position) {
         mGridFragment.onItemSelected(position);
-    }
-
-
-
-    private String[] getEventNames() {
-        String[] names = {
-                "Event1", "Event2", "Event3",
-                "Event4", "Event5", "Event6",
-                "Event7", "Event8", "Event9",
-                "Event10", "Event11", "Event12"};
-        return names;
     }
 
     @Override

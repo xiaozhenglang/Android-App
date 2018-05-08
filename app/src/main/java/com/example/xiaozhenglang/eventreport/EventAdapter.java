@@ -42,19 +42,19 @@ public class EventAdapter extends BaseAdapter {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.event_item,
-                    parent, false);
+            convertView = inflater.inflate(R.layout.event_item, parent, false);
         }
 
         TextView eventTitle = (TextView) convertView.findViewById(R.id.event_title);
         TextView eventAddress = (TextView) convertView.findViewById(R.id.event_address);
-        TextView eventDescrption = (TextView) convertView.findViewById(R.id.event_description);
+        TextView eventDescription = (TextView) convertView.findViewById(R.id.event_description);
 
         Event r = eventData.get(position);
         eventTitle.setText(r.getTitle());
         eventAddress.setText(r.getAddress());
-        eventDescrption.setText(r.getDescription());
+        eventDescription.setText(r.getTitle());
         return convertView;
+
     }
 }
 

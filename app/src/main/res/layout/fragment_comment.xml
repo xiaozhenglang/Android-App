@@ -9,9 +9,8 @@
         android:id="@+id/comment_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
-        android:horizontalSpacing="10sp"
-        android:verticalSpacing="10sp"
-        ></GridView>
+        android:numColumns="2">
+
+    </GridView>
 
 </FrameLayout>

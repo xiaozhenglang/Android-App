@@ -2,6 +2,7 @@ package com.example.xiaozhenglang.eventreport;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -21,7 +23,7 @@ import java.util.List;
 public class EventFragment extends Fragment {
 
 
-    onItemSelectedListener mCallBack;
+    OnItemSelected mCallBack;
     public EventFragment() {
         // Required empty public constructor
     }
@@ -30,47 +32,49 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_event, container, false);
-        ListView listView = (ListView) view.findViewById(R.id.event_list);
+        ListView listView = view.findViewById(R.id.event_list);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                getEventNames()
-                );
+                getEventNames());
+
+        // Assign adapter to ListView.
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                mCallBack.onItemSelected(i);
+                mCallBack.onItemSeleted(i);
             }
         });
-
         return view;
     }
 
+    private String[] getEventNames() {
+        String[] names = {
+                "Event1", "Event2", "Event3",
+                "Event4", "Event5", "Event6",
+                "Event7", "Event8", "Event9",
+                "Event10", "Event11", "Event12"};
+        return names;
 
-    public interface onItemSelectedListener {
-        public void onItemSelected(int position);
     }
+
+    public interface OnItemSelected {
+        public void onItemSeleted(int position);
+    }
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            mCallBack = (onItemSelectedListener) context;
-        } catch (ClassCastException ex) {
+            mCallBack = (OnItemSelected) context;
+        } catch (ClassCastException e) {
 
         }
-    }
-
-    private String[] getEventNames() {
-        String[] eventNames = new String[] {
-                "Event1", "Event2", "Event3",
-                "Event4", "Event5", "Event6",
-                "Event7", "Event8", "Event9",
-                "Event10", "Event11", "Event12"
-        };
-        return eventNames;
     }
 
 }
