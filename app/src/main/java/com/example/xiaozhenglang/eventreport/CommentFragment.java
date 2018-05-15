@@ -22,6 +22,7 @@ public class CommentFragment extends Fragment {
 
 
     GridView mGridView;
+    OnItemSelected mCallBack;
 
     public CommentFragment() {
         // Required empty public constructor
@@ -35,6 +36,12 @@ public class CommentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_comment, container, false);
         mGridView = (GridView) view.findViewById(R.id.comment_grid);
         mGridView.setAdapter(new EventAdapter(getActivity()));
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                mCallBack.onItemSelected(i);
+            }
+        });
         return view;
     }
 
@@ -47,6 +54,20 @@ public class CommentFragment extends Fragment {
             } else {
                 mGridView.getChildAt(i).setBackgroundColor(Color.parseColor("#FAFAFA"));
             }
+        }
+    }
+
+    public interface OnItemSelected {
+        public void onItemSelected(int position);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mCallBack = (OnItemSelected) context;
+        } catch (ClassCastException e) {
+
         }
     }
 

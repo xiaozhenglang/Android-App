@@ -1,65 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_container"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:padding="20dp"
-    tools:context="com.example.xiaozhenglang.eventreport.MainActivity">
+    android:paddingTop="20dp"
+    android:orientation="vertical">
+
 
     <TextView
         android:text="UserName"
-        android:fontFamily="Roboto"
-        android:textColor="#FF3F89E7"
-        android:textSize="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="Roboto"
-        android:id="@+id/eidtTextLogin"
-        android:layout_gravity="center_horizontal"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Password"
         android:textSize="20dp"
-        android:fontFamily="Roboto"
         android:textColor="#FF3F89E7"/>
 
     <EditText
-        android:fontFamily="Roboto"
+        android:id="@+id/editTextLogin"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        />
+
+    <TextView
+        android:text="PassWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Robot"
+        android:textSize="20dp"
+        android:textColor="#FF3F89E7"/>
+
+    <EditText
         android:id="@+id/editTextPassword"
-        android:inputType="textPassword"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="Roboto"
+        android:inputType="textPassword"/>
 
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:text="Login"
         android:fontFamily="Roboto"
         android:textColor="@android:color/white"
+        android:id="@+id/submit"
         android:background="@drawable/login_button"
-        android:id="@+id/submit"/>
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"/>
+
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="48dp"
+        android:fontFamily="Robot"
         android:text="Register"
-        android:textColor="@android:color/white"
+        android:id="@+id/register"
+        android:textSize="20dp"
         android:background="@drawable/login_button"
-        android:fontFamily="Roboto"
-        android:id="@+id/register"/>
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"/>
+
+
+
 
 
 </LinearLayout>

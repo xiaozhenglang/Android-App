@@ -24,6 +24,7 @@ public class EventFragment extends Fragment {
 
 
     OnItemSelected mCallBack;
+    ListView mListView;
     public EventFragment() {
         // Required empty public constructor
     }
@@ -34,7 +35,7 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_event, container, false);
-        ListView listView = view.findViewById(R.id.event_list);
+        mListView = view.findViewById(R.id.event_list);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getActivity(),
@@ -42,8 +43,8 @@ public class EventFragment extends Fragment {
                 getEventNames());
 
         // Assign adapter to ListView.
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 mCallBack.onItemSeleted(i);
@@ -66,6 +67,16 @@ public class EventFragment extends Fragment {
         public void onItemSeleted(int position);
     }
 
+    public void onItemSelet(int position) {
+        int numbers = mListView.getChildCount();
+        for(int i = 0; i < numbers; i++) {
+            if(i == position) {
+                mListView.getChildAt(i).setBackgroundColor(Color.BLUE);
+            } else {
+                mListView.getChildAt(i).setBackgroundColor(Color.parseColor("#FAFAFA"));
+            }
+        }
+    }
 
     @Override
     public void onAttach(Context context) {
